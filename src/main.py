@@ -1,11 +1,14 @@
 import git
 
-
-repo = git.Repo('./.git')
-
-repo.git.execute('git add *')
-repo.git.execute('git commit -a -m "commit"')
-repo.git.execute('git push')
+def commit_push() -> bool:
+    try:
+        repo = git.Repo('./.git')
+        repo.git.execute('git add *')
+        repo.git.execute('git commit -a -m "commit"')
+        repo.git.execute('git push')
+        return True
+    except:
+        pass
 
 colors = {
     0 : (27, 31, 35),
@@ -16,3 +19,6 @@ colors = {
 }
 
 0x1b1f23
+
+if __name__ == "__main__":
+    commit_push()
