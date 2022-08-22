@@ -1,6 +1,6 @@
 import git
 
-def commit_push() -> bool:
+def commit_push():
     try:
         repo = git.Repo('./.git')
         repo.git.execute('git add *')
