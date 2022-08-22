@@ -15,7 +15,7 @@ data = img.getdata()
 
 cList = []
 
-for i in ROWS:
+for i in range(2):
     #put in every {column number}'th value. im too high for this. you know how to do that
     #keep in mind that the calandar moves to the right overall as time moves on. IE you might have to flip the list. picture a printer
     bList=["see comment"]
