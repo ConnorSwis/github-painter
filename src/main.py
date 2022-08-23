@@ -25,7 +25,7 @@ def run():
 
 t = lambda: threading.Thread(target=run).start()
 
-schedule.every().day.at("12:02").do(t)
+schedule.every().day.at("12:03").do(t)
 
 while 1:
     schedule.run_pending()
