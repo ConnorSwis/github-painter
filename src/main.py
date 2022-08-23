@@ -1,6 +1,7 @@
 import threading
 from funcs import *
 import logging
+import schedule
 
 
 logging.basicConfig(
@@ -11,6 +12,20 @@ logging.basicConfig(
 )
 
 
-fp = './src/design2.bmp'
+fp = './src/design.bmp'
 data = read_image(fp)
-commit_push()
+
+def run():
+    cnt = data.pop(0)
+    for i in range(cnt):
+        commit_push(f'Day {364-len(data)}/364 Commit {i}/{cnt}')
+
+t = lambda: threading.Thread(target=run).start()
+
+schedule.every().day.at("00:45").do(t)
+
+while 1:
+    schedule.run_pending()
+
+
+#  TODO: count % 4; count++ for color. picture can come later.

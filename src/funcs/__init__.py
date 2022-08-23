@@ -19,7 +19,7 @@ def commit_push(commit_message: str="commit"):
         repo.git.execute('git add *')
         repo.git.execute(f'git commit -a -m {commit_message}')
         repo.git.execute('git push')
-        logger.info('Committed and pushed successfully.')
+        logger.info(f'Success: {commit_message}')
         return True
     except Exception as e:
         logger.error('commit_push failed: '+str(e)) 
@@ -46,3 +46,5 @@ def read_image(fp: str):
     result = [x for y in result for x in y]
     logger.info('Data read successfully.')
     return result
+
+commit_push()
