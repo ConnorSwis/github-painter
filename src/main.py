@@ -8,7 +8,7 @@ logging.basicConfig(
     filename='github_painter.log',
     format='%(asctime)s:%(levelname)s: %(message)s',
     filemode='w',
-    level=logging.DEBUG
+    level=logging.INFO
 )
 
 
@@ -25,7 +25,7 @@ def run():
 
 t = lambda: threading.Thread(target=run).start()
 
-schedule.every().day.at("12:16").do(t)
+schedule.every().day.at("12:32").do(t)
 
 while 1:
     schedule.run_pending()
