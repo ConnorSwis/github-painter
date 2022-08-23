@@ -20,12 +20,12 @@ def run():
     logger.info(str(cnt))
     for i in range(cnt):
         gil_dumb = 364-len(data)
-        msg = f'Day {gil_dumb}/364 Commit {i}/{cnt}'
+        msg = rf'Day {gil_dumb}/364 Commit {i}/{cnt}'
         commit_push(msg)
 
 t = lambda: threading.Thread(target=run).start()
 
-schedule.every().day.at("12:06").do(t)
+schedule.every().day.at("12:08").do(t)
 
 while 1:
     schedule.run_pending()
