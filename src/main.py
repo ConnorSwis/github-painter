@@ -2,6 +2,7 @@ import threading
 from funcs import *
 import logging
 import schedule
+import itertools
 
 
 logging.basicConfig(
@@ -12,20 +13,23 @@ logging.basicConfig(
 )
 
 
-fp = './src/design.bmp'
-data = read_image(fp)
+data = itertools.cycle((0,1,2,3)[::-1])
 
 def run():
-    cnt = data.pop(0)
+    cnt = next(data)
     logger.info(str(cnt))
     for i in range(cnt):
-        gil_dumb = 364-len(data)
-        msg = rf'Day {gil_dumb}/364 Commit {i}/{cnt}'
+        msg = f'Commit {i+1}/{cnt}'
         commit_push(msg)
 
-t = lambda: threading.Thread(target=run).start()
+t = lambda: threading.Thread(target=run).start()# if start else ...
 
-schedule.every().day.at("12:32").do(t)
+# def begin():
+#     global start
+#     start = True
+
+# schedule.every().sunday.do(begin)
+schedule.every().day.at("12:51").do(t)
 
 while 1:
     schedule.run_pending()
