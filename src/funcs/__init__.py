@@ -1,7 +1,6 @@
 import git
 import logging
 import os
-from PIL import Image
 
 
 logger = logging.getLogger()

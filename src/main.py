@@ -1,8 +1,10 @@
-import threading
-from funcs import *
-import logging
-import schedule
 import itertools
+import logging
+import threading
+
+import schedule
+
+from funcs import *
 
 
 logging.basicConfig(
@@ -17,19 +19,16 @@ data = itertools.cycle((0,1,2,3,4)[::-1])
 
 def run():
     cnt = next(data)
-    logger.info(str(cnt))
-    logger.info('')
+    logger.info("Beginning Run")
     for i in range(cnt):
-        msg = f'Commit {i+1}/{cnt}'
-        commit_push(msg)
+        commit_push(f'Commit {i+1}/{cnt}')
 
-t = lambda: threading.Thread(target=run).start()
+tyson = lambda: threading.Thread(target=run).start()
 
 
-schedule.every().day.at("12:58").do(t)
+schedule.every().day.at("12:58").do(tyson)
+
+commit_push()
 
 while 1:
     schedule.run_pending()
-
-
-#  TODO: count % 4; count++ for color. picture can come later.
