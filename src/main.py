@@ -1,19 +1,16 @@
-import git
+import threading
+from funcs import *
+import logging
 
 
-def commit_push(commit_message: str="commit"):
-    "{bruh} Run {run_number} of {days_runs}"
-    try:
-        repo = git.Repo('./.git')
-        repo.git.execute('git add *')
-        repo.git.execute(f'git commit -a -m {commit_message}')
-        repo.git.execute('git push')
-        return True
-    except:
-        pass
+logging.basicConfig(
+    filename='github_painter.log',
+    format='%(asctime)s:%(levelname)s: %(message)s',
+    filemode='w',
+    level=logging.DEBUG
+)
 
 
-0x1b1f23
-
-if __name__ == "__main__":
-    commit_push()
+fp = './src/design2.bmp'
+data = read_image(fp)
+commit_push()
