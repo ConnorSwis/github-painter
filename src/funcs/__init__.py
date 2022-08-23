@@ -49,5 +49,3 @@ def read_image(fp: str):
     result = [x for y in result for x in y]
     logger.info('Data read successfully.')
     return result
-
-commit_push()
