@@ -17,7 +17,7 @@ def commit_push(commit_message: str="commit"):
     try:
         repo = git.Repo('./.git')
         repo.git.execute('git add *')
-        repo.git.execute(f'git commit -m "{commit_message}"')
+        repo.git.execute(f'git commit -a -m "{commit_message}"')
         repo.git.execute('git push')
         with open('committer', 'wb') as f:
             f.write(os.urandom(16))
