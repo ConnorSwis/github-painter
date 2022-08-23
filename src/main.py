@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 
 
-data = itertools.cycle((0,1,2,3)[::-1])
+data = itertools.cycle((0,1,2,3,4)[::-1])
 
 def run():
     cnt = next(data)
@@ -29,7 +29,7 @@ t = lambda: threading.Thread(target=run).start()# if start else ...
 #     start = True
 
 # schedule.every().sunday.do(begin)
-schedule.every().day.at("12:51").do(t)
+schedule.every().day.at("12:52").do(t)
 
 while 1:
     schedule.run_pending()
