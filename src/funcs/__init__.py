@@ -1,5 +1,6 @@
 import git
 import logging
+import os
 from PIL import Image
 
 
@@ -19,6 +20,8 @@ def commit_push(commit_message: str="commit"):
         repo.git.execute('git add *')
         repo.git.execute(f'git commit -m "{commit_message}"')
         repo.git.execute('git push')
+        with open('committer', 'wb') as f:
+            f.write(os.urandom(16))
         logger.info(f'Success: {commit_message}')
         return True
     except Exception as e:
