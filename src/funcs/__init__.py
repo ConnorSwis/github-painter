@@ -24,9 +24,27 @@ def commit_push(commit_message: str="commit"):
         logger.info(f'Success: {commit_message}')
         return True
     except Exception as e:
-        logger.error('commit_push failed: '+str(e)) 
+        logger.error('commit_push failed: ' + str(e)) 
 
+def save(count: int):
+    """Saves position in repeating sequence.
 
+    Args:
+        count (int): Current item in seqeuence.
+    """
+    with open('./src/save', 'w') as f:
+        f.write(str(count))
+
+def load():
+    """Get latest saved position.
+
+    Returns:
+        (int)
+    """
+    try:
+        with open('./src/save', 'r') as f: return int(f.read())
+    except FileNotFoundError: ...
+            
 
 # def read_image(fp: str):
 #     """Creates queue for commits from image.
