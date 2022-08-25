@@ -29,7 +29,7 @@ def run():
 
 
 tyson = lambda: threading.Thread(target=run).start()
-schedule.every().day.at("23:11").do(tyson)
+schedule.every().day.at("13:18").do(tyson)
 
 
 while 1:
