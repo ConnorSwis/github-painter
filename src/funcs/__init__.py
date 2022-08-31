@@ -15,15 +15,16 @@ def commit_push(commit_message: str="commit"):
         bool: True or None
     """
     try:
+        env = os.environ
         repo = git.Repo('./.git')
-        repo.git.execute('git add *')
-        repo.git.execute(f'git commit -a -m "{commit_message}"')
-        repo.git.execute('git push')
+        repo.git.execute(['git', 'commit', '-a', '-m', f'"{commit_message}"'], env=env)
+        repo.git.execute(['git', 'push'], env=env)
         with open('committer', 'wb') as f:
             f.write(os.urandom(16))
         logger.info(f'Success: {commit_message}')
         return True
     except Exception as e:
+        raise e
         logger.error('commit_push failed: ' + str(e)) 
 
 def save(count: int):

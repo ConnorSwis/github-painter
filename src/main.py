@@ -29,8 +29,11 @@ def run():
 
 
 tyson = lambda: threading.Thread(target=run).start()
-schedule.every().day.at("13:18").do(tyson)
+
+tyson()
+
+#schedule.every().day.at("15:28").do(tyson)
 
 
-while 1:
-    schedule.run_pending()
+#while 1:
+#    schedule.run_pending()
