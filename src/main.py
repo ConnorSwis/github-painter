@@ -30,10 +30,8 @@ def run():
 
 tyson = lambda: threading.Thread(target=run).start()
 
-tyson()
-
-#schedule.every().day.at("15:28").do(tyson)
+schedule.every().day.at("12:00").do(tyson)
 
 
-#while 1:
-#    schedule.run_pending()
+while 1:
+    schedule.run_pending()
