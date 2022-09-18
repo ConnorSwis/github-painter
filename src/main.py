@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 
 
-data = itertools.cycle((0,1,2,3,4)[::-1])
+data = itertools.cycle((1,2,3,4)[::-1])
 if (n:=load()):  # catches up to save, if not first run.
     while True:
         if next(data) == n: break
