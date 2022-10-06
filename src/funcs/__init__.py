@@ -16,11 +16,11 @@ def commit_push(commit_message: str="commit"):
     """
     try:
         env = os.environ
+        with open('committer', 'wb') as f:
+            f.write(os.urandom(16))
         repo = git.Repo('./.git')
         repo.git.execute(['git', 'commit', '-a', '-m', f'"{commit_message}"'], env=env)
         repo.git.execute(['git', 'push'], env=env)
-        with open('committer', 'wb') as f:
-            f.write(os.urandom(16))
         logger.info(f'Success: {commit_message}')
         return True
     except Exception as e:
